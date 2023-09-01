@@ -1,4 +1,4 @@
-module hamming_code
+module pes_hamming
 (    input serial_in,
      input clk,
 	  input write,
