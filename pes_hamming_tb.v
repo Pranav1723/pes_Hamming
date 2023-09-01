@@ -1,8 +1,8 @@
-module hamming_code_tb();
+module pes_hamming_tb();
 reg serial_in,clk,write;
 wire serial_out;
 
-hamming_code uut 
+pes_hamming uut 
 (
 .serial_in(serial_in),
 .clk(clk),
