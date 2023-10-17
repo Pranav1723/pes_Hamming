@@ -44,6 +44,9 @@ Parallel Prefix Adders are designed for high-speed addition and are commonly use
 # Ripple Carry Adder
 In this repository we will be looking into a specific type of adder which is the ripple carry adder. We will be doing the RTL to GDS procedure with a design of a simple ripple carry adder along with it's testbench.
 
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/07026c08-6945-4b6c-a3c2-8c0acb55f692)
+
+
 # Procedure:
 
 - Create a ripple carry adder verilog file along with it's testbench using the gedit command:
@@ -69,6 +72,8 @@ This is what we can see:
 ![Screenshot from 2023-10-18 00-33-42](https://github.com/Pranav1723/pes_Hamming/assets/78376336/4c044b7a-11a8-495f-8480-2abd08ae6ece)
 
 This is the result of the Pre-synthesis simulation
+
+## RTL Synthesis
 
 - RTL Synthesis: Type this command:
   ``` yosys ```
@@ -112,6 +117,8 @@ This is the result of the Pre-synthesis simulation
 ``` iverilog primitives.v sky130_fd_sc_hd.v pes_rca_net.v tb_pes_rca.v ```
 
 ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/888e9b2a-0695-40a4-a976-9d1f277bb6d5)
+
+## GLS 
 
 - Type this command to generate the .vcd file
 
