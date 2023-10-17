@@ -55,10 +55,12 @@ In this repository we will be looking into a specific type of adder which is the
   ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/c28d5c40-11f5-4054-ae13-fb3e9af0bd11)
 
 - To start the simulation use the following code:
-  iverilog pes_rca.v tb_pes_rca.v
+
+  ``` iverilog pes_rca.v tb_pes_rca.v ```
 
 - Use this command to open the gtkwave tool:
-  gtkwave pes_rca.vcd
+
+  ``` gtkwave pes_rca.vcd ```
 
 ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/7815ed9c-a21a-42fb-9da6-e37c56858357)
 
@@ -68,7 +70,57 @@ This is what we can see:
 
 This is the result of the Pre-synthesis simulation
 
-- RTL Synthesis:
+- RTL Synthesis: Type this command:
+  ``` yosys ```
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/adc38b2b-748c-4677-ae37-7b6eda3789ac)
+
+- Type the following commands:
+
+  ``` read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+  ``` read_verilog pes_rca.v ```
+
+  ``` synth -top pes_rca ```
+  
+      
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/ba960a01-9a06-43a9-9d4e-6c5f12d677e8)
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/f8e5a0f0-b190-4bfe-be3a-23dd5958c0ef)
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/59d74212-5481-410d-acd7-8a56ca8f8b40)
+
+- Now we type this command:
+
+ ``` abc -liberty -lib ./lib/sky130_fd_sc_hd__tt_025C_1v80.lib ```
+
+ ``` show ```
+
+ ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/42ea8fcd-718b-4962-9e4c-eeafaf6ab25f)
 
 
+ ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/d73b06a7-415f-46dc-b715-d9e82e0f6eaa)
 
+
+- To generate the netlist we must type the command:
+
+  ``` write_verilog -noattr pes_rca_net.v ```
+
+- To read the design and test bench file we must use the command:
+
+``` iverilog primitives.v sky130_fd_sc_hd.v pes_rca_net.v tb_pes_rca.v ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/888e9b2a-0695-40a4-a976-9d1f277bb6d5)
+
+- Type this command to generate the .vcd file
+
+  ``` ./a.out ```
+
+- To view the waveform type the command
+
+  ``` gtkwave pes_rca.vcd ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/ef25d2a5-3c2e-463f-b81c-984a0e28cab4)
+
+As we can see the GLS is the same as the pre synthesis simulation and therefore our erntire procedure is up to the mark and correct.
