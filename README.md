@@ -1,17 +1,74 @@
-# pes_Hamming
-Hamming code generator for error detection and correction
-# Hamming Code Generator
+# pes_rca
+# Adders Overview
 
-This repository contains a Verilog implementation of a Hamming code generator. Hamming codes are a class of error-correcting codes used in digital communication and data storage systems. They can detect and correct single-bit errors in transmitted or stored data.
+Adders are fundamental digital circuits used in computer systems and other digital devices for performing addition operations. They are an integral part of the arithmetic logic unit (ALU) in central processing units (CPUs) and are used in various applications involving numerical calculations. In general, an adder takes two binary numbers as input and produces their sum as output. Here is a brief overview of adders:
 
-## Project Overview
+## Purpose and Use
 
-The primary goal of this project is to provide a practical and educational example of a Hamming code generator implemented in Verilog. Hamming codes are known for their simplicity and effectiveness in error detection and correction. By exploring this implementation, you can gain insights into how error-correcting codes work at the hardware level.
+Adders are used in various digital systems and applications, including:
 
-## Key Features
+1. **Arithmetic Operations:** Adders are primarily used for performing addition operations, which include both integer and floating-point addition. These operations are fundamental to numerical computations in computer systems.
 
-- **Hamming Code Generation**: The Verilog code generates Hamming codes for a given data word, including the necessary parity bits.
-  
-- **Error Detection**: The generated Hamming codes allow for the detection of single-bit errors.
+2. **Subtraction:** Subtraction is often implemented using adders with the use of two's complement representation. By adding a number to the negation of another number, subtraction can be achieved.
 
-- **Error Correction**: In the presence of a single-bit error, the code can correct the error and recover the original data.
+3. **Counting:** In digital counters and sequential circuits, adders are used to increment or decrement values to count or keep track of events or time intervals.
+
+4. **Data Processing:** Adders play a crucial role in various data processing tasks, including address calculations, data manipulation, and signal processing.
+
+5. **Multiplication and Division:** High-performance adders are used in multiplication and division operations, as these operations are often implemented as a series of additions and subtractions.
+
+## Types of Adders
+
+There are several types of adders, each with its own advantages and trade-offs. The primary types of adders include:
+
+### Ripple Carry Adder (RCA)
+
+The Ripple Carry Adder is a straightforward and commonly used type of adder. It adds binary numbers by cascading the carry output of each stage to the carry input of the next stage. While simple, it can be slow for long binary numbers, as it requires carry propagation from the least significant bit to the most significant bit.
+
+### Carry Look-Ahead Adder (CLA)
+
+The Carry Look-Ahead Adder improves the speed of addition by calculating carry signals for each stage in parallel, rather than waiting for the carry to ripple through each bit. This type of adder is more complex but faster than the Ripple Carry Adder.
+
+### Carry Save Adder (CSA)
+
+The Carry Save Adder is an adder designed for efficient parallel addition. It is often used in multioperand addition operations and is commonly found in digital signal processing (DSP) applications.
+
+### Carry Select Adder
+
+The Carry Select Adder combines both Ripple Carry and Carry Look-Ahead adders. It selects the carry from either a Ripple Carry Adder or a Carry Look-Ahead Adder depending on the input values, offering a balance between speed and complexity.
+
+### Parallel Prefix Adder (PPA)
+
+Parallel Prefix Adders are designed for high-speed addition and are commonly used in high-performance processors. They use a prefix computation network to calculate carry signals efficiently.
+
+# Ripple Carry Adder
+In this repository we will be looking into a specific type of adder which is the ripple carry adder. We will be doing the RTL to GDS procedure with a design of a simple ripple carry adder along with it's testbench.
+
+# Procedure:
+
+- Create a ripple carry adder verilog file along with it's testbench using the gedit command:
+
+  ![Screenshot from 2023-10-18 00-36-44](https://github.com/Pranav1723/pes_Hamming/assets/78376336/5d3a0973-0170-484b-850e-332a9db9294d)
+
+  ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/4d26d1a8-6d97-4ba9-9eae-1113e210c185)
+
+  ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/c28d5c40-11f5-4054-ae13-fb3e9af0bd11)
+
+- To start the simulation use the following code:
+  iverilog pes_rca.v tb_pes_rca.v
+
+- Use this command to open the gtkwave tool:
+  gtkwave pes_rca.vcd
+
+![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/7815ed9c-a21a-42fb-9da6-e37c56858357)
+
+This is what we can see:
+
+![Screenshot from 2023-10-18 00-33-42](https://github.com/Pranav1723/pes_Hamming/assets/78376336/4c044b7a-11a8-495f-8480-2abd08ae6ece)
+
+This is the result of the Pre-synthesis simulation
+
+- RTL Synthesis:
+
+
+
