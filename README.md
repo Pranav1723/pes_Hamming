@@ -1,5 +1,5 @@
 # pes_rca 
-(This repository was namedpes_Hamming originally and was a repositiry for a Hamming code generator but had to change the design because of some issues with the testbench and the code for the encoder and the deocder modules for the same.
+(This repository was named pes_Hamming originally and was a repositiry for a Hamming code generator, but had to change the design because of some issues with the testbench and the code for the encoder and the deocder modules for the same.
 Hence it has now been renamed pes_rca and the new design is that of a 16 bit ripple carry adder which we will be discussing about in detail in this repository)
 
 # Adders Overview
