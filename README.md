@@ -1,5 +1,7 @@
 # pes_rca 
-(was pes_Hamming originally but had to change the design because of some issues with the testbench for the same)
+(This repository was namedpes_Hamming originally and was a repositiry for a Hamming code generator but had to change the design because of some issues with the testbench and the code for the encoder and the deocder modules for the same.
+Hence it has now been renamed pes_rca and the new design is that of a 16 bit ripple carry adder which we will be discussing about in detail in this repository)
+
 # Adders Overview
 
 Adders are fundamental digital circuits used in computer systems and other digital devices for performing addition operations. They are an integral part of the arithmetic logic unit (ALU) in central processing units (CPUs) and are used in various applications involving numerical calculations. In general, an adder takes two binary numbers as input and produces their sum as output. Here is a brief overview of adders:
@@ -52,6 +54,95 @@ In this repository we will be looking into a specific type of adder which is the
 
 - Create a ripple carry adder verilog file along with it's testbench using the gedit command:
 
+```
+// top module for ripple carry adder
+module pes_rca( 
+    input [15:0] A,
+    input [15:0] B,
+    input Cin,
+    output [15:0] Sum,
+    output Cout
+);
+
+wire [15:0] carry; // Internal carry signals
+
+assign carry[0] = A[0] & B[0] | (A[0] ^ B[0]) & Cin;
+assign carry[1] = A[1] & B[1] | (A[1] ^ B[1]) & carry[0];
+assign carry[2] = A[2] & B[2] | (A[2] ^ B[2]) & carry[1];
+assign carry[3] = A[3] & B[3] | (A[3] ^ B[3]) & carry[2];
+assign carry[4] = A[4] & B[4] | (A[4] ^ B[4]) & carry[3];
+assign carry[5] = A[5] & B[5] | (A[5] ^ B[5]) & carry[4];
+assign carry[6] = A[6] & B[6] | (A[6] ^ B[6]) & carry[5];
+assign carry[7] = A[7] & B[7] | (A[7] ^ B[7]) & carry[6];
+assign carry[8] = A[8] & B[8] | (A[8] ^ B[8]) & carry[7];
+assign carry[9] = A[9] & B[9] | (A[9] ^ B[9]) & carry[8];
+assign carry[10] = A[10] & B[10] | (A[10] ^ B[10]) & carry[9];
+assign carry[11] = A[11] & B[11] | (A[11] ^ B[11]) & carry[10];
+assign carry[12] = A[12] & B[12] | (A[12] ^ B[12]) & carry[11];
+assign carry[13] = A[13] & B[13] | (A[13] ^ B[13]) & carry[12];
+assign carry[14] = A[14] & B[14] | (A[14] ^ B[14]) & carry[13];
+assign carry[15] = A[15] & B[15] | (A[15] ^ B[15]) & carry[14];
+
+assign Sum = A + B + Cin;
+assign Cout = carry[15];
+
+endmodule
+
+```
+
+```
+// testbench for ripple carry adder
+module tb_pes_rca;
+
+    // Inputs
+    reg [15:0] A;
+    reg [15:0] B;
+    reg Cin;
+
+    // Outputs
+    wire [15:0] Sum;
+    wire Cout;
+
+    // Instantiate the Unit Under Test (UUT)
+    pes_rca uut (
+        .A(A),
+        .B(B),
+        .Cin(Cin),
+        .Sum(Sum),
+        .Cout(Cout)
+    );
+
+    // Clock generation
+    reg Clock = 0;
+    always #10 Clock = ~Clock;
+
+    // Simulation inputs
+    initial begin
+        // Initialize inputs
+        A = 16'h1234;
+        B = 16'h5678;
+        Cin = 1'b0;
+
+        // Apply inputs after some initial delay
+        #20 A = 16'hABCD;
+        #20 B = 16'h9876;
+        #20 Cin = 1'b1;
+
+        // Wait for a while to observe the results
+        #100;
+
+        // Finish simulation
+        $finish;
+    end
+
+    // Dump VCD file for waveform simulation
+    initial begin
+        $dumpfile("pes_rca.vcd");
+        $dumpvars;
+    end
+endmodule 
+
+```
   ![Screenshot from 2023-10-18 00-36-44](https://github.com/Pranav1723/pes_Hamming/assets/78376336/5d3a0973-0170-484b-850e-332a9db9294d)
 
 
