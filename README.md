@@ -53,9 +53,12 @@ In this repository we will be looking into a specific type of adder which is the
 
   ![Screenshot from 2023-10-18 00-36-44](https://github.com/Pranav1723/pes_Hamming/assets/78376336/5d3a0973-0170-484b-850e-332a9db9294d)
 
-  ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/4d26d1a8-6d97-4ba9-9eae-1113e210c185)
 
-  ![image](https://github.com/Pranav1723/pes_Hamming/assets/78376336/c28d5c40-11f5-4054-ae13-fb3e9af0bd11)
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/4189313b-80a4-4267-9c4e-a02da08400a4)
+
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/0d7bcb86-90cf-4e8f-ac31-b41848c81c86)
+
 
 - To start the simulation use the following code:
 
