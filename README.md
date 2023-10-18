@@ -1,4 +1,4 @@
-# pes_rca
+# pes_rca (was pes_Hamming originally but had to change the design because of the some issues with the testbench for the same)
 # Adders Overview
 
 Adders are fundamental digital circuits used in computer systems and other digital devices for performing addition operations. They are an integral part of the arithmetic logic unit (ALU) in central processing units (CPUs) and are used in various applications involving numerical calculations. In general, an adder takes two binary numbers as input and produces their sum as output. Here is a brief overview of adders:
