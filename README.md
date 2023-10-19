@@ -225,4 +225,4 @@ This is the result of the Pre-synthesis simulation
 
 ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/ef25d2a5-3c2e-463f-b81c-984a0e28cab4)
 
-As we can see the GLS is the same as the pre synthesis simulation and therefore our erntire procedure is up to the mark and correct.
+As we can see the GLS is the same as the pre synthesis simulation and therefore our entire procedure is up to the mark and correct.
