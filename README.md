@@ -224,3 +224,20 @@ This is the result of the Pre-synthesis simulation
 ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/ef25d2a5-3c2e-463f-b81c-984a0e28cab4)
 
 As we can see the GLS is the same as the pre synthesis simulation and therefore our entire procedure is up to the mark and correct.
+
+## Physical Design
+- To start off with the physical design synthesis, floorplan and placement and clock timing first off install OpenLane and Docker.
+- After the installation follow these steps to start off:
+- 1. Navigate to the OpenLane directory using this command:
+
+  ``` cd openlane/designs ```
+
+- Once youu are in this directory make another directory whose name reflects the name of your design. In this case the name of the directory is pes_rca.
+
+  ``` mkdir pes_rca ```
+
+  ``` cd pes_rca ```
+
+- Once you are in the directory save your design verilog file here along with the config.json file which is written as such:
+
+  <img width="759" alt="image" src="https://github.com/Pranav1723/pes_rca/assets/78376336/d8150f43-324b-498f-b008-e66abd8a3b4a">
