@@ -226,9 +226,44 @@ This is the result of the Pre-synthesis simulation
 As we can see the GLS is the same as the pre synthesis simulation and therefore our entire procedure is up to the mark and correct.
 
 ## Physical Design
-- To start off with the physical design synthesis, floorplan and placement and clock timing first off install OpenLane and Docker.
+- To start off with the physical design synthesis, floorplan and placement and clock tree synthesis first off install OpenLane and Docker.
+
+### Installation steps:
+
+- To install docker follow the steps accordingly:
+
+``` 
+sudo apt-get remove docker docker-engine docker.io containerd runc
+sudo apt-get update
+sudo apt-get install \
+   ca-certificates \
+   curl \
+   gnupg \
+   lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+echo \
+   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+```
+
+- To download and install OpenLane follow these steps:
+
+```
+git clone --depth 1 https://github.com/The-OpenROAD-Project/OpenLane.git
+cd OpenLane/
+make
+make test 
+
+```
+
+
 - After the installation follow these steps to start off:
-- 1. Navigate to the OpenLane directory using this command:
+- Navigate to the OpenLane directory using this command:
 
   ``` cd openlane/designs ```
 
@@ -240,4 +275,83 @@ As we can see the GLS is the same as the pre synthesis simulation and therefore 
 
 - Once you are in the directory save your design verilog file here along with the config.json file which is written as such:
 
-  <img width="759" alt="image" src="https://github.com/Pranav1723/pes_rca/assets/78376336/d8150f43-324b-498f-b008-e66abd8a3b4a">
+ 
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/6ecd4fc3-9e20-49cf-8a69-cf9529a0ed83)
+
+
+- In the same directory run these commands:
+
+``` make mount ```
+
+``` ./flow.tcl -interactive ```
+
+``` package require openlane 0.9 ```
+
+- After these commands type the command:
+
+  ``` prep -design pes_rca ```
+
+  ![image](https://github.com/Pranav1723/pes_rca/assets/78376336/1112071c-ec68-4ce4-9e22-b7ebc7f110b0)
+
+### Synthesis
+
+- To start the process of synthesis use the command:
+
+``` run_synthesis ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/c09e7403-f690-4961-aa05-0f01d5642652)
+
+The reports of the synthesis are as follows:
+
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/4bf96114-ed1d-4344-82cc-ad94a8e8c75b)
+
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/4f855b28-9271-41cb-baa2-3dfbb10e7e1f)
+
+
+### Floorplan
+
+- To view the floorplan results type the following command:
+
+``` run_floorplan ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/c28fa584-0acb-4f65-a6fb-453f038d50cc)
+
+The floorplan looks as follows:
+
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/8ba18e5e-340a-4da1-aa2c-a6e60aafc3c1)
+
+
+
+### Placement
+
+- To ensure that the procedure for viewing and analysing the placement works, make sure that the project is in the right directory.
+- After this is done, run the following magic command:
+
+``` magic -T /home/Desktop/Downloads/sky130A.tech lef read ../../tmp/merged.nom.lef def read pes_rca.def & ```
+
+- After typing this command type the placement command in the OpenLane terminal
+
+``` run_placement ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/c6ddc671-3390-4c0a-82d4-8b4ed799fb16)
+
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/5d742a7b-d9e6-4d48-a982-c5c79406320a)
+
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/0d12d070-e027-4899-8540-440eeade58d6)
+
+
+### Clock tree synthesis
+
+- To proceed with the clock tree synthesis type the following command:
+
+``` run_cts ```
+
+![image](https://github.com/Pranav1723/pes_rca/assets/78376336/2a3ffe11-f963-453b-a0d2-7a236787cd2d)
+
+
+
